@@ -15,3 +15,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+document.addEventListener("scroll", () => {
+  const header = document.querySelector("header");
+  const introHeight = document.getElementById("intro").offsetHeight;
+
+  if (window.scrollY > introHeight - 80) {
+    header.classList.add("visible");
+  } else {
+    header.classList.remove("visible");
+  }
+});
