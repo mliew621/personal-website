@@ -1,17 +1,16 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const tabs = document.querySelectorAll('.tab');
-  const projectSections = document.querySelectorAll('.projects');
+const buttons = document.querySelectorAll("[data-carousel-button]")
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      // Remove active state from all
-      tabs.forEach(t => t.classList.remove('active'));
-      projectSections.forEach(section => section.classList.remove('active'));
+buttons.forEach(button => {
+  button.addEventListener("click", () => {
+    const offset = button.dataset.carouselButton === "next" ? 1 : -1
+    const slides = button.closest("[data-carousel]").querySelector("[data-slides]")
 
-      // Activate the clicked one
-      tab.classList.add('active');
-      const target = tab.getAttribute('data-target');
-      document.getElementById(target).classList.add('active');
-    });
-  });
-});
+    const activeSlide = slides.querySelector("[data-active]")
+    let newIndex = [...slides.children].indexOf(activeSlide) + offset
+    if (newIndex < 0) newIndex = slides.children.length - 1
+    if (newIndex >= slides.children.length) newIndex = 0
+
+    slides.children[newIndex].dataset.active = true
+    delete activeSlide.dataset.active
+  })
+})
