@@ -221,6 +221,7 @@ section {
   align-items: center;
   padding: clamp(24px, 4vw, 50px);
   gap: clamp(20px, 4vw, 40px);
+  min-width: 0;
 }
 
 .project-photo {
@@ -260,6 +261,15 @@ section {
   flex-direction: column;
   justify-content: flex-start;
 }
+
+.project-info p,
+.project-info h2,
+.project-info a {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: normal;
+}
+
 
 .carousel {
   width: 100vw;
@@ -420,6 +430,8 @@ section {
     height: auto;
     padding: 5rem 0;
     padding-bottom: 6rem;
+    width: 100%;
+    max-width: 100%;
   }
 
   .carousel-button {
