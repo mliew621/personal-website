@@ -80,7 +80,7 @@ nav a:hover {
 
 
 /* Typography */
-h1, h2, h3 { margin-bottom: 1rem; color: #074216; }
+h1, h2, h3 { margin-bottom: 10px; color: #074216; }
 h1 { font-size: clamp(36pt, 6vw, 54pt); line-height: 1.1; }
 h2 { font-size: clamp(24pt, 4vw, 32pt); }
 h3 { font-size: clamp(20pt, 3.5vw, 28pt); font-weight: normal; color: #074216; }
@@ -171,10 +171,15 @@ section {
 }
 
 .link-next {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  align-content:center;
   background-color: #074216;
   width: fit-content;
   padding: 10px 20px;
   border-radius: 100px;
+
 }
 
 .link-next a {
@@ -191,13 +196,179 @@ section {
   background-color: #0742165c;
 }
 
+.experience-section {
+  display: block;
+  /* padding-top: 10vh; */
+  /* padding-bottom: 10vh; */
+}
+
+.experience-heading {
+  max-width: 32rem;
+  margin-bottom: 3.5rem;
+}
+
+.experience-heading h2 {
+  margin-bottom: 0.75rem;
+}
+
+.experience-heading > p:last-child {
+  max-width: 28rem;
+  margin-bottom: 0;
+}
+
+.eyebrow,
+.experience-date {
+  color: #3A4D49;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.experience-layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.6fr) minmax(0, 1.4fr);
+  gap: clamp(1rem, 3vw, 3rem);
+  align-items: stretch;
+  width: 100%;
+  margin: 0 0 3.5rem;
+}
+
+.timeline {
+  position: relative;
+  padding: 0.5rem 0 0.5rem 1.5rem;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 1.2rem;
+  bottom: 1.2rem;
+  left: 0.25rem;
+  width: 2px;
+  background-color: #07421633;
+}
+
+.experience-item {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 1.2rem 1rem 1.2rem 1.25rem;
+  border: 0;
+  border-left: 3px solid transparent;
+  background: transparent;
+  color: #2b2015;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.experience-item:hover,
+.experience-item:focus-visible,
+.experience-item.is-active {
+  border-left-color: #074216;
+  background-color: #07421612;
+  transform: translateX(0.35rem);
+  outline: none;
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 1.65rem;
+  left: -1.62rem;
+  width: 0.7rem;
+  height: 0.7rem;
+  border: 2px solid #074216;
+  border-radius: 50%;
+  background-color: #FCF6E8;
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.experience-item.is-active .timeline-dot,
+.experience-item:hover .timeline-dot,
+.experience-item:focus-visible .timeline-dot {
+  background-color: #074216;
+  transform: scale(1.25);
+}
+
+.experience-item-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.experience-item-copy strong {
+  color: #074216;
+  font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+  font-weight: 600;
+}
+
+.experience-item-copy > span:last-child {
+  color: #3A4D49;
+  font-size: 0.95rem;
+}
+
+.experience-detail {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.8fr) minmax(0, 1fr);
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  align-items: center;
+  min-height: 320px;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px #3911111c;
+}
+
+.experience-detail-image {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: #d9d6d6;
+}
+
+.experience-detail-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.experience-detail-copy h3 {
+  margin: 0.4rem 0 0.9rem;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.experience-detail-copy p:not(.experience-date) {
+  margin-bottom: 1.25rem;
+}
+
+.experience-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.experience-tags span {
+  padding: 0.3rem 0.65rem;
+  border: 1px solid #07421655;
+  border-radius: 100px;
+  color: #074216;
+  font-size: 0.78rem;
+}
+
+.experience-section > .link-next {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 
 /* Projects and Folder Section */
 .folder {
-  width: 60vw;
-  max-width: 900px;
-  min-height: unset;
-  background-color: #d9d6d6;
+  width: min(72vw, 1000px);
+  max-width: 1000px;
+  min-height: 500px;
+  background-color: #ffffff;
   border-radius: 0px 20px 20px 20px;
   position: relative;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -210,8 +381,9 @@ section {
   left: 0;
   width: 200px;
   height: 50px;
-  background-color: #d9d6d6;
+  background-color: #ffffff;
   border-radius: 20px 20px 0 0;
+  box-shadow: 0px -8px 10px -6px rgba(0, 0, 0, 0.1);
 }
 
 .folder-body {
@@ -227,7 +399,6 @@ section {
 .project-photo {
   flex: 0 0 auto;
   width: clamp(220px, 26vw, 320px);
-  aspect-ratio: 1 / 1;
   border-radius: 12px;
   background-color: white;
   overflow: hidden;
@@ -244,7 +415,6 @@ section {
 .project-photo img {
   width: 100%;
   height: 100%;
-  aspect-ratio: 1/1;
   object-fit: cover;
   display: block;
   border-radius: 20px;
@@ -272,7 +442,7 @@ section {
 
 
 .carousel {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   position: relative;
   display: flex;
@@ -328,11 +498,11 @@ section {
 }
 
 .carousel-button.prev {
-  left: 3rem;
+  left: 0;
 }
 
 .carousel-button.next {
-  right: 3rem;
+  right: 0;
 }
 
 [data-slides] {
@@ -341,6 +511,7 @@ section {
 
 [data-slides] > li {
   list-style: none !important;
+  padding-left: 0;
 }
 
 /* Animations */
@@ -359,10 +530,28 @@ section {
 
 @media (max-width: 750px) {
 
-  section#intro,
-  section#aboutme {
+  header {
+    max-width: calc(100vw - 1rem);
+    padding: 0 0.75rem;
+  }
+
+  header nav {
+    gap: 0.65rem;
+  }
+
+  header nav a {
+    font-size: 0.82rem;
+  }
+
+  section#intro {
     flex-direction: column;
     gap: 2.5rem;
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+  }
+
+  section#experience {
+    min-height: auto;
     padding-top: 6rem;
     padding-bottom: 4rem;
   }
@@ -395,10 +584,31 @@ section {
     object-fit: cover;
   }
 
+  .experience-heading {
+    text-align: center;
+    margin: 0 auto 2.5rem;
+  }
+
+  .experience-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .timeline {
+    padding-left: 1.25rem;
+  }
+
+  .experience-detail {
+    grid-template-columns: minmax(100px, 0.7fr) minmax(0, 1fr);
+    min-height: 0;
+  }
+
 
   .folder {
     width: 90vw;
-    height: 70vh;
+    height: auto;
+    min-height: 640px;
   }
 
   .folder-body {
